@@ -1,0 +1,11 @@
+- [ ] Create package.json for React dependencies
+- [ ] Create src folder structure
+- [ ] Create index.js (entry point)
+- [ ] Create App.js (main component with state for current page)
+- [ ] Create components: Header.js, Home.js, Services.js, About.js, CaseStudies.js, Contact.js, Footer.js
+- [ ] Create App.css with all styles from HTML
+- [ ] Convert navigation logic to React state and onClick handlers
+- [ ] Convert mobile menu toggle to React state
+- [ ] Convert form submission to React handler
+- [ ] Add scroll animations using React refs and useEffect
+- [ ] Test the app by running npm start
