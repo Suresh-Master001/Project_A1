@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataInsight Analytics | IT Data Analytics Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --success: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background: #c0392b;
+        }
+        
+        .btn-light {
+            background: var(--light);
+            color: var(--dark);
+        }
+        
+        .btn-light:hover {
+            background: #dde4e6;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary);
+        }
+        
+        .nav-links a.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Page Content Styles */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            background: rgba(52, 152, 219, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .service-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--light);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .about-image {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            height: 400px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-image {
+            height: 250px;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .member-role {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* Case Studies Section */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-study {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .case-study:hover {
+            transform: translateY(-10px);
+        }
+        
+        .case-image {
+            height: 200px;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .case-content p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-about p {
+            color: #bdc3c7;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Page Header Styles */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb li {
+            margin: 0 5px;
+        }
+        
+        .breadcrumb a {
+            color: #bdc3c7;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: #bdc3c7;
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        .page-content {
+            padding: 80px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" data-page="home">
+                    <i class="fas fa-chart-line"></i>Data<span>Insight</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#" data-page="home" class="active">Home</a></li>
+                    <li><a href="#" data-page="services">Services</a></li>
+                    <li><a href="#" data-page="about">About</a></li>
+                    <li><a href="#" data-page="case-studies">Case Studies</a></li>
+                    <li><a href="#" data-page="contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Transform Your IT Business with Data-Driven Insights</h1>
+                    <p>We provide cutting-edge data analytics solutions to help IT companies make informed decisions, optimize operations, and drive growth.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn" data-page="services">Our Services</a>
+                        <a href="#" class="btn btn-light" data-page="contact">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Preview Section -->
+        <section id="services-preview">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>We offer comprehensive data analytics solutions tailored specifically for IT companies</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Business Intelligence</h3>
+                        <p>Transform raw data into actionable insights with interactive dashboards and reports that drive strategic decisions.</p>
+                        <a href="#" class="service-link" data-page="services">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Predictive Analytics</h3>
+                        <p>Leverage machine learning algorithms to forecast trends, identify opportunities, and mitigate risks.</p>
+                        <a href="#" class="service-link" data-page="services">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Performance Analytics</h3>
+                        <p>Monitor and optimize your IT infrastructure, applications, and business processes with real-time analytics.</p>
+                        <a href="#" class="service-link" data-page="services">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="btn" data-page="services">View All Services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Preview Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Why Choose DataInsight Analytics?</h2>
+                        <p>With over a decade of experience in data analytics for the IT sector, we have helped hundreds of companies unlock the true potential of their data.</p>
+                        <p>Our team of data scientists, analysts, and IT experts work together to deliver solutions that are not only technically advanced but also business-focused.</p>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">IT Clients Served</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">Client Satisfaction</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">40%</span>
+                                <span class="stat-label">Avg. Cost Reduction</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Support Available</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn" style="margin-top: 20px;" data-page="about">Learn More About Us</a>
+                    </div>
+                    <div class="about-image">
+                        <div>Data-Driven Results for IT Businesses</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Transform Your Business with Data?</h2>
+                <p>Contact us today for a free consultation and discover how our analytics solutions can drive your IT company's growth.</p>
+                <a href="#" class="btn btn-accent" data-page="contact">Get Free Consultation</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Our Services</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Services</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Comprehensive Data Analytics Solutions</h2>
+                    <p>We offer a full range of data analytics services designed specifically for IT companies</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Business Intelligence</h3>
+                        <p>Transform raw data into actionable insights with interactive dashboards and reports that drive strategic decisions.</p>
+                        <ul style="text-align: left; margin-top: 15px; color: var(--gray);">
+                            <li>Interactive Dashboards</li>
+                            <li>KPI Monitoring</li>
+                            <li>Data Visualization</li>
+                            <li>Report Automation</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Predictive Analytics</h3>
+                        <p>Leverage machine learning algorithms to forecast trends, identify opportunities, and mitigate risks.</p>
+                        <ul style="text-align: left; margin-top: 15px; color: var(--gray);">
+                            <li>Machine Learning Models</li>
+                            <li>Trend Forecasting</li>
+                            <li>Risk Assessment</li>
+                            <li>Predictive Maintenance</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Performance Analytics</h3>
+                        <p>Monitor and optimize your IT infrastructure, applications, and business processes with real-time analytics.</p>
+                        <ul style="text-align: left; margin-top: 15px; color: var(--gray);">
+                            <li>Infrastructure Monitoring</li>
+                            <li>Application Performance</li>
+                            <li>Process Optimization</li>
+                            <li>Real-time Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Security Analytics</h3>
+                        <p>Detect and respond to security threats with advanced analytics that identify anomalies and potential breaches.</p>
+                        <ul style="text-align: left; margin-top: 15px; color: var(--gray);">
+                            <li>Threat Detection</li>
+                            <li>Anomaly Detection</li>
+                            <li>Security Monitoring</li>
+                            <li>Incident Response</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Cloud Analytics</h3>
+                        <p>Harness the power of cloud platforms to scale your analytics capabilities and reduce infrastructure costs.</p>
+                        <ul style="text-align: left; margin-top: 15px; color: var(--gray);">
+                            <li>Cloud Data Warehousing</li>
+                            <li>Scalable Analytics</li>
+                            <li>Cost Optimization</li>
+                            <li>Multi-cloud Solutions</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Custom Solutions</h3>
+                        <p>Get tailored analytics solutions designed specifically for your unique business needs and challenges.</p>
+                        <ul style="text-align: left; margin-top: 15px; color: var(--gray);">
+                            <li>Custom Dashboards</li>
+                            <li>API Integrations</li>
+                            <li>Workflow Automation</li>
+                            <li>Tailored Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Get Started with Our Services?</h2>
+                <p>Contact us today to discuss how our data analytics solutions can benefit your IT company.</p>
+                <a href="#" class="btn btn-accent" data-page="contact">Contact Us Now</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>About Us</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>About</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2010, DataInsight Analytics has been at the forefront of data analytics solutions for the IT industry. Our journey began with a simple mission: to help IT companies harness the power of their data to drive growth and innovation.</p>
+                        <p>Over the years, we've grown into a trusted partner for over 150 IT companies, delivering insights that have helped our clients reduce costs, improve efficiency, and make data-driven decisions.</p>
+                        
+                        <h3 style="margin-top: 30px;">Our Mission</h3>
+                        <p>To empower IT companies with actionable insights through cutting-edge data analytics, enabling them to optimize operations, reduce costs, and drive innovation.</p>
+                        
+                        <h3 style="margin-top: 30px;">Our Vision</h3>
+                        <p>To be the leading data analytics provider for the IT industry, recognized for our innovative solutions and exceptional client success.</p>
+                    </div>
+                    <div class="about-image">
+                        <div>Driving Innovation Through Data</div>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 80px;">
+                    <h2>Our Team</h2>
+                    <p>Meet the experts behind our success</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image" style="background: #3498db;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Sarah Johnson</h3>
+                            <div class="member-role">Chief Data Scientist</div>
+                            <p>10+ years of experience in machine learning and predictive analytics.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image" style="background: #e74c3c;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Michael Chen</h3>
+                            <div class="member-role">Head of Business Intelligence</div>
+                            <p>Expert in data visualization and dashboard development.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image" style="background: #2ecc71;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Emily Rodriguez</h3>
+                            <div class="member-role">Senior Data Analyst</div>
+                            <p>Specializes in performance analytics and optimization.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image" style="background: #f39c12;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>David Kim</h3>
+                            <div class="member-role">Cloud Analytics Architect</div>
+                            <p>Cloud infrastructure and scalable analytics solutions expert.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Case Studies Page -->
+    <div id="case-studies" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Case Studies</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Case Studies</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Success Stories</h2>
+                    <p>See how we've helped IT companies achieve remarkable results with our data analytics solutions</p>
+                </div>
+
+                <div class="case-studies-grid">
+                    <div class="case-study">
+                        <div class="case-image" style="background: #3498db;">
+                            Infrastructure Optimization
+                        </div>
+                        <div class="case-content">
+                            <h3>Reducing Operational Costs by 30%</h3>
+                            <p>How we helped a SaaS company optimize their infrastructure and reduce costs through performance analytics.</p>
+                            <a href="#" class="service-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-study">
+                        <div class="case-image" style="background: #e74c3c;">
+                            Customer Behavior Analysis
+                        </div>
+                        <div class="case-content">
+                            <h3>Increasing Conversion Rates by 45%</h3>
+                            <p>Developing a comprehensive user analytics platform that transformed customer engagement.</p>
+                            <a href="#" class="service-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-study">
+                        <div class="case-image" style="background: #2ecc71;">
+                            Security Threat Detection
+                        </div>
+                        <div class="case-content">
+                            <h3>Reducing Security Incidents by 70%</h3>
+                            <p>Implementing a real-time threat detection system for a financial technology company.</p>
+                            <a href="#" class="service-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-study">
+                        <div class="case-image" style="background: #f39c12;">
+                            Cloud Migration Analytics
+                        </div>
+                        <div class="case-content">
+                            <h3>Accelerating Cloud Migration by 50%</h3>
+                            <p>How analytics helped an enterprise IT company streamline their cloud migration process.</p>
+                            <a href="#" class="service-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-study">
+                        <div class="case-image" style="background: #9b59b6;">
+                            Predictive Maintenance
+                        </div>
+                        <div class="case-content">
+                            <h3>Reducing Downtime by 60%</h3>
+                            <p>Implementing predictive maintenance analytics for a large IT infrastructure provider.</p>
+                            <a href="#" class="service-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-study">
+                        <div class="case-image" style="background: #1abc9c;">
+                            Data-Driven Decision Making
+                        </div>
+                        <div class="case-content">
+                            <h3>Improving Decision Accuracy by 75%</h3>
+                            <p>How business intelligence transformed strategic planning for a technology consulting firm.</p>
+                            <a href="#" class="service-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Write Your Success Story?</h2>
+                <p>Contact us today to discuss how our data analytics solutions can help your IT company achieve similar results.</p>
+                <a href="#" class="btn btn-accent" data-page="contact">Start Your Journey</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>Ready to unlock the power of your data? Contact us today for a free consultation.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Our Office</h4>
+                                    <p>123 Analytics Drive, Tech City, TC 10101</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>info@datainsight.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Business Hours</h4>
+                                    <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <input type="text" placeholder="Subject" required>
+                            <select required>
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="bi">Business Intelligence</option>
+                                <option value="predictive">Predictive Analytics</option>
+                                <option value="performance">Performance Analytics</option>
+                                <option value="security">Security Analytics</option>
+                                <option value="cloud">Cloud Analytics</option>
+                                <option value="custom">Custom Solutions</option>
+                            </select>
+                            <textarea placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DataInsight</h3>
+                    <div class="footer-about">
+                        <p>Transforming IT businesses through data-driven insights and advanced analytics solutions.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#" data-page="case-studies"><i class="fas fa-chevron-right"></i> Case Studies</a></li>
+                        <li><a href="#" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Business Intelligence</a></li>
+                        <li><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Predictive Analytics</a></li>
+                        <li><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Performance Analytics</a></li>
+                        <li><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Security Analytics</a></li>
+                        <li><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Cloud Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Analytics Drive, Tech City</a></li>
+                        <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                        <li><a href="mailto:info@datainsight.com"><i class="fas fa-envelope"></i> info@datainsight.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9:00AM - 6:00PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DataInsight Analytics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation System
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all page links
+            const pageLinks = document.querySelectorAll('[data-page]');
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show the selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Add click event to all page links
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                });
+            });
+            
+            // Mobile Menu Toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.remove('active');
+                });
+            });
+            
+            // Form Submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+            
+            // Simple animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Animate service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+
+            // Animate team members
+            document.querySelectorAll('.team-member').forEach(member => {
+                member.style.opacity = 0;
+                member.style.transform = 'translateY(20px)';
+                member.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(member);
+            });
+
+            // Animate case studies
+            document.querySelectorAll('.case-study').forEach(caseStudy => {
+                caseStudy.style.opacity = 0;
+                caseStudy.style.transform = 'translateY(20px)';
+                caseStudy.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(caseStudy);
+            });
+        });
+    </script>
+</body>
+</html>

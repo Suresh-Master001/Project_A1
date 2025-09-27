@@ -1,18 +1,17 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
-      animation: {
-        fadeIn: 'fadeIn 0.5s ease-in-out',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
+      colors: {
+        primary: '#2c3e50',
+        secondary: '#3498db',
+        accent: '#e74c3c',
+        light: '#ecf0f1',
+        dark: '#2c3e50',
+        gray: '#95a5a6',
+        success: '#2ecc71',
       },
     },
   },
